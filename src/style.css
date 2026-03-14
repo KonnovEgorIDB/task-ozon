@@ -1,0 +1,148 @@
+body{
+  background-color: white;
+  font-family: Helvetica, sans-serif;
+}
+
+.progress{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #005dff;
+}
+
+.progress__ring {
+  --s: 200px;
+  --w: 17px;
+  --a: calc(((var(--p) * 360) / 100) * 1deg); 
+  width: var(--s); height: var(--s); 
+  border-radius: 50%; 
+  background: conic-gradient(#005dff, #005dff var(--a), #eef3f6 var(--a), #eef3f6);
+}
+
+.progress-bar__circle {
+  width: calc(var(--s) - 2 * var(--w)); 
+  height: calc(var(--s) - 2 * var(--w)); 
+  background: #fff; 
+  border-radius: 50%; 
+}
+.progress__ring, .progress-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress__controls{
+  margin: 40px;
+  padding: 10px;
+  display: flex;
+  gap: 3px;
+  flex-direction: column;
+}
+
+.progress__view{
+  margin: 40px;
+}
+
+.progress__view_hidden{
+  display: none;
+}
+
+.switch{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.switch__toggle {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch__toggle input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch__label{
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  border: 1px solid black;
+  border-radius: 34px;
+  box-sizing: border-box;
+}
+
+.switch__input{
+  position: absolute;
+  inset: 0 0 0 0;
+  background-color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 35px;
+  text-align: center;
+  font-size: 20px;
+  caret-color: transparent;
+}
+
+.switch__input:focus-visible{
+  outline: none;
+}
+
+.switch__label:has(.switch__input:disabled) {
+  border-color: #eef3f6;
+  background-color: #f9fbfc;
+}
+
+.switch__label:has(.switch__input:invalid) {
+  border-color: #FF2C00;
+  background-color: #f9fbfc;
+}
+
+.switch__input:disabled{
+  cursor: not-allowed;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	display: none;
+}
+
+.switch__slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0 0 0 0;
+  background-color: #eef3f6;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.switch__slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+
+}
+
+input:checked + .switch__slider {
+  background-color: #005dff;
+}
+
+input:focus + .switch__slider {
+  box-shadow: 0 0 1px #005dff;
+}
+
+input:checked + .switch__slider:before {
+  transform: translateX(26px);
+}

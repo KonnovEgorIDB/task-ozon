@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test-ozon</title>
+  </head>
+  <body class="body">
+    <div class="progress">
+      <div class="progress__view">
+        <div class="progress__ring" role="progressbar" aria-valuenow="75" aria-valumax="100" style="--p:75">
+          <div class="progress-bar__circle"></div>
+        </div>
+      </div>
+      <div class="progress__controls">
+        <div class="switch">
+          <label class="switch__label">
+            <input class="switch__input" id='input-value' type="number" min="0" max="100">
+          </label>
+          <p class="switch__title">Value</p>
+        </div>
+        <div class="switch">
+          <label class="switch__toggle">
+            <input id="switch-animate" type="checkbox" >
+            <span class="switch__slider"></span>
+          </label>
+          <p class="switch__title">Animate</p>
+        </div>
+        <div class="switch">
+          <label class="switch__toggle">
+            <input id="switch-hide" type="checkbox" >
+            <span class="switch__slider"></span>
+          </label>
+          <p class="switch__title">Hide</p>
+        </div>
+      </div>
+    </div>
+    
+    
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
