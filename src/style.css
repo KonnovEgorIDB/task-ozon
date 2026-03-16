@@ -1,9 +1,9 @@
-body{
+body {
   background-color: white;
   font-family: Helvetica, sans-serif;
 }
 
-.progress{
+.progress {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
@@ -15,25 +15,33 @@ body{
 .progress__ring {
   --s: 200px;
   --w: 17px;
-  --a: calc(((var(--p) * 360) / 100) * 1deg); 
-  width: var(--s); height: var(--s); 
-  border-radius: 50%; 
-  background: conic-gradient(#005dff, #005dff var(--a), #eef3f6 var(--a), #eef3f6);
+  --a: calc(((var(--p) * 360) / 100) * 1deg);
+  width: var(--s);
+  height: var(--s);
+  border-radius: 50%;
+  background: conic-gradient(
+    #005dff,
+    #005dff var(--a),
+    #eef3f6 var(--a),
+    #eef3f6
+  );
 }
 
 .progress-bar__circle {
-  width: calc(var(--s) - 2 * var(--w)); 
-  height: calc(var(--s) - 2 * var(--w)); 
-  background: #fff; 
-  border-radius: 50%; 
+  width: calc(var(--s) - 2 * var(--w));
+  height: calc(var(--s) - 2 * var(--w));
+  background: #fff;
+  border-radius: 50%;
 }
-.progress__ring, .progress-value {
+
+.progress__ring,
+.progress-value {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.progress__controls{
+.progress__controls {
   margin: 40px;
   padding: 10px;
   display: flex;
@@ -41,15 +49,15 @@ body{
   flex-direction: column;
 }
 
-.progress__view{
+.progress__view {
   margin: 40px;
 }
 
-.progress__view_hidden{
+.progress__view_hidden {
   display: none;
 }
 
-.switch{
+.switch {
   display: flex;
   gap: 10px;
   align-items: center;
@@ -62,13 +70,13 @@ body{
   height: 34px;
 }
 
-.switch__toggle input { 
+.switch__toggle input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.switch__label{
+.switch__label {
   position: relative;
   display: inline-block;
   width: 60px;
@@ -78,7 +86,7 @@ body{
   box-sizing: border-box;
 }
 
-.switch__input{
+.switch__input {
   position: absolute;
   inset: 0 0 0 0;
   background-color: white;
@@ -90,7 +98,7 @@ body{
   caret-color: transparent;
 }
 
-.switch__input:focus-visible{
+.switch__input:focus-visible {
   outline: none;
 }
 
@@ -100,17 +108,17 @@ body{
 }
 
 .switch__label:has(.switch__input:invalid) {
-  border-color: #FF2C00;
+  border-color: #ff2c00;
   background-color: #f9fbfc;
 }
 
-.switch__input:disabled{
+.switch__input:disabled {
   cursor: not-allowed;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
-	display: none;
+  display: none;
 }
 
 .switch__slider {
@@ -118,7 +126,7 @@ input[type="number"]::-webkit-inner-spin-button {
   cursor: pointer;
   inset: 0 0 0 0;
   background-color: #eef3f6;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 34px;
 }
 
@@ -130,9 +138,8 @@ input[type="number"]::-webkit-inner-spin-button {
   left: 4px;
   bottom: 4px;
   background-color: white;
-  transition: .4s;
+  transition: 0.4s;
   border-radius: 50%;
-
 }
 
 input:checked + .switch__slider {

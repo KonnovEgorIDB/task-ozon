@@ -1,61 +1,43 @@
-import './style.css';
+import "./style.css";
+import Progress from "./api.js";
 
-const progressBar = document.querySelector('.progress__ring');
-const progressBarDisplay = document.querySelector('.progress__view');
+const progress = new Progress(".progress__view", { value: 75 });
 
-const input = document.querySelector('#input-value');
-const switchInput = document.querySelector('#switch-input');
-const switchHide = document.querySelector('#switch-hide');
-const switchAnimate = document.querySelector('#switch-animate');
+const input = document.querySelector("#input-value");
+const switchHide = document.querySelector("#switch-hide");
+const switchAnimate = document.querySelector("#switch-animate");
 
-input.addEventListener('input' ,(e) => {
-  const validInput = e.target.validity.valid;
-  if(validInput){
-    const value = e.target.value;
-    progressBar.style.cssText=`--p:${value}`;
-    progressBar.setAttribute('aria-valuenow', value);
+input.addEventListener("input", (e) => {
+  const value = Number(e.target.value);
+  if (!isNaN(value) && value >= 0 && value <= 100) {
+    progress.setValue(value);
+  } else {
+    e.target.value = progress.getValue();
   }
-  else{
-    e.target.value='100';
-    progressBar.style.cssText=`--p:100`;
-    progressBar.setAttribute('aria-valuenow', 0);
-    console.log('err');
+});
+
+switchHide.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    progress.setHidden(true);
+  } else {
+    progress.setHidden(false);
   }
-  console.log(progressBar );
 });
 
 
-switchHide.addEventListener('change', (e) => {
-  if(e.target.checked){
-    progressBarDisplay.classList.add(['progress__view_hidden']);
-  }
-  else {
-    progressBarDisplay.classList.remove(['progress__view_hidden']);
-  }
-})
 
-let animateInterval;
+switchAnimate.addEventListener("change", (e) => {
+  if (e.target.checked) {
 
-switchAnimate.addEventListener('change', (e) => {
-  if(e.target.checked){
-    console.log(progressBar.style.cssText.split(' ')[1].split(';')[0]);
-
-    input.setAttribute('disabled', true);
+    input.setAttribute("disabled", true);
     input.value = null;
 
-    animateInterval = setInterval(() => {
-      const number = progressBar.style.cssText.split(' ')[1].split(';')[0];
-      if(number >= 100){
-        progressBar.style.cssText=`--p:0`;
-        
-      }
-      else{
-        progressBar.style.cssText=`--p:${Number(number)+1}`;
-      }
-    },10);
+    progress.setAnimated(true);
+
+  } else {
+    progress.setAnimated(false);
+    input.removeAttribute("disabled");
+    input.value = progress.getValue();
+
   }
-  else {
-    input.removeAttribute('disabled');
-    clearInterval(animateInterval);
-  }
-})
+});
