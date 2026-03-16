@@ -8,17 +8,7 @@
   </head>
   <body class="body">
     <div class="progress">
-      <div class="progress__view">
-        <div
-          class="progress__ring"
-          role="progressbar"
-          aria-valuenow="75"
-          aria-valumax="100"
-          style="--p: 0"
-        >
-          <div class="progress-bar__circle"></div>
-        </div>
-      </div>
+      <div class="progress__view" id="progress-1"></div>
       <div class="progress__controls">
         <div class="switch">
           <label class="switch__label">
@@ -48,6 +38,13 @@
         </div>
       </div>
     </div>
+
+    <template id="progress-template">
+      <div class="progress__ring" role="progressbar"
+          aria-valuenow="0" aria-valuemax="100" style="--p:0">
+        <div class="progress-bar__circle"></div>
+      </div>
+    </template>
 
     <script type="module" src="/src/main.js"></script>
   </body>
