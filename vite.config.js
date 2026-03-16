@@ -1,3 +1,5 @@
-export default {
-  base: '/test-ozon/'
-}
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  base: '/task-ozon/'
+})

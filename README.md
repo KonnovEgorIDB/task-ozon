@@ -43,8 +43,8 @@ npm run build
 
 ## Технологии
 
-- Vanilla JS (ES2021, классы с приватными полями)
-- CSS (conic-gradient, CSS-переменные)
-- HTML `<template>` для переиспользуемой разметки
+- Vanilla JS
+- CSS
+- HTML `<template>`
 - Vite
 - ESLint + Prettier + Stylelint + Lefthook

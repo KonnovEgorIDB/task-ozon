@@ -5,7 +5,7 @@ import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default [
   {
-    ignores: ['.stylelintrc.js']
+    ignores: ['.stylelintrc.js', 'dist/**/*']
   },
   js.configs.recommended,
   {
