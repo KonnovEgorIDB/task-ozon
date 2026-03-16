@@ -2,8 +2,8 @@ pre-commit:
   commands:
     lint-and-format-js:
       glob: "**/*.js"
-      run: npx eslint {staged_files} --fix && npx prettier --write {staged_files} && git add {staged_files}
+      run: npm run lint:fix -- {staged_files} && npm run format -- {staged_files} && git add {staged_files}
 
     format-other:
       glob: "**/*.{css,html,json}"
-      run: npx prettier --write {staged_files} && git add {staged_files}
+      run: npm run format -- {staged_files} && git add {staged_files}
