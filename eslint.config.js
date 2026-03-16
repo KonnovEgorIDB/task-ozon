@@ -1,11 +1,11 @@
-import globals from 'globals';
-import js from '@eslint/js';
-import unicornPlugin from 'eslint-plugin-unicorn';
-import eslintConfigPrettier from 'eslint-config-prettier';
+import globals from 'globals'
+import js from '@eslint/js'
+import unicornPlugin from 'eslint-plugin-unicorn'
+import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default [
   {
-    ignores: [".stylelintrc.js"]
+    ignores: ['.stylelintrc.js']
   },
   js.configs.recommended,
   {
@@ -14,20 +14,20 @@ export default [
       sourceType: 'module',
       globals: {
         ...globals.browser,
-        ...globals.es2021,
-      },
-    },
+        ...globals.es2021
+      }
+    }
   },
 
   {
     plugins: {
-      unicorn: unicornPlugin,
+      unicorn: unicornPlugin
     },
     rules: {
       ...unicornPlugin.configs['flat/recommended'].rules,
       'no-console': 'off',
-      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-    },
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }]
+    }
   },
-  eslintConfigPrettier,
-];
+  eslintConfigPrettier
+]

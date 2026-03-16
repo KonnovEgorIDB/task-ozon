@@ -31,6 +31,6 @@ module.exports = {
       {
         message: 'Expected keyframe name to be snake_case'
       }
-    ],
+    ]
   }
-};
+}

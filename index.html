@@ -2,13 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
     <title>test-ozon</title>
   </head>
   <body class="body">
     <div class="progress">
-      <div class="progress__view" id="progress-1"></div>
+      <div
+        class="progress__view"
+        id="progress-1"
+      ></div>
       <div class="progress__controls">
         <div class="switch">
           <label class="switch__label">
@@ -24,14 +29,20 @@
         </div>
         <div class="switch">
           <label class="switch__toggle">
-            <input id="switch-animate" type="checkbox" />
+            <input
+              id="switch-animate"
+              type="checkbox"
+            />
             <span class="switch__slider"></span>
           </label>
           <p class="switch__title">Animate</p>
         </div>
         <div class="switch">
           <label class="switch__toggle">
-            <input id="switch-hide" type="checkbox" />
+            <input
+              id="switch-hide"
+              type="checkbox"
+            />
             <span class="switch__slider"></span>
           </label>
           <p class="switch__title">Hide</p>
@@ -40,12 +51,20 @@
     </div>
 
     <template id="progress-template">
-      <div class="progress__ring" role="progressbar"
-          aria-valuenow="0" aria-valuemax="100" style="--p:0">
+      <div
+        class="progress__ring"
+        role="progressbar"
+        aria-valuenow="0"
+        aria-valuemax="100"
+        style="--p: 0"
+      >
         <div class="progress-bar__circle"></div>
       </div>
     </template>
 
-    <script type="module" src="/src/main.js"></script>
+    <script
+      type="module"
+      src="/src/main.js"
+    ></script>
   </body>
 </html>

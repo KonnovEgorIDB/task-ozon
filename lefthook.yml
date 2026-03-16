@@ -1,9 +1,9 @@
 pre-commit:
   commands:
     lint-and-format-js:
-      glob: "**/*.js"
+      glob: '**/*.js'
       run: npm run lint:fix -- {staged_files} && npm run format -- {staged_files} && git add {staged_files}
 
     format-other:
-      glob: "**/*.{css,html,json}"
+      glob: '**/*.{css,html,json}'
       run: npm run format -- {staged_files} && git add {staged_files}
