@@ -1,7 +1,6 @@
 import './style.css'
-import Progress from './api.js'
-
-const progress = new Progress('#progress-1')
+import { createProgress } from './api.js'
+const progress = createProgress('.progress__view')
 progress.setValue(75)
 
 const input = document.querySelector('#input-value')

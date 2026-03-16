@@ -4,6 +4,9 @@ import unicornPlugin from 'eslint-plugin-unicorn';
 import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
+  {
+    ignores: [".stylelintrc.js"]
+  },
   js.configs.recommended,
   {
     languageOptions: {

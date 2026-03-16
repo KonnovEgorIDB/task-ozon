@@ -1,54 +1,46 @@
-export default class Progress {
-  #progressElement
-  #progressContainer
-  #value
-  #animateInterval
+export function createProgress(containerSelector) {
+  const container =
+    typeof containerSelector === 'string'
+      ? document.querySelector(containerSelector)
+      : containerSelector
 
-  constructor(containerSelector) {
-    this.#progressContainer =
-      typeof containerSelector === 'string'
-        ? document.querySelector(containerSelector)
-        : containerSelector
+  if (!container) throw new Error('Progress container not found')
 
-    if (!this.#progressContainer) throw new Error('Progress container not found')
+  const template = document.querySelector('#progress-template')
+  container.append(template.content.cloneNode(true))
 
-    if (!this.#progressContainer.querySelector('.progress__ring')) {
-      const template = document.querySelector('#progress-template')
-      const node = template.content.cloneNode(true)
-      this.#progressContainer.append(node)
-    }
+  const element = container.querySelector('.progress__ring')
 
-    this.#progressElement = this.#progressContainer.querySelector('.progress__ring')
-    if (!this.#progressElement) throw new Error('Progress element not found')
+  const state = {
+    value: 0,
+    animateInterval: undefined
   }
 
-  setValue(value) {
-    const v = Math.max(0, Math.min(100, Number(value)))
-    this.#value = v
-    this.#progressElement.style.setProperty('--p', v)
-    this.#progressElement.setAttribute('aria-valuenow', v)
+  function setValue(value) {
+    state.value = Math.max(0, Math.min(100, Number(value)))
+    element.style.setProperty('--p', state.value)
+    element.setAttribute('aria-valuenow', state.value)
   }
 
-  setAnimated(isAnimated) {
+  function setAnimated(isAnimated) {
     if (isAnimated) {
-      this.#animateInterval = setInterval(() => {
-        if (this.#value >= 100) {
-          this.#value = 0
-        } else {
-          this.#value += 1
-        }
-        this.#progressElement.style.setProperty('--p', this.#value)
+      state.animateInterval = setInterval(() => {
+        state.value = state.value >= 100 ? 0 : state.value + 1
+        element.style.setProperty('--p', state.value)
       }, 10)
     } else {
-      clearInterval(this.#animateInterval)
+      clearInterval(state.animateInterval)
+      state.animateInterval = undefined
     }
   }
 
-  setHidden(isHidden) {
-    this.#progressContainer.classList.toggle('progress__view_hidden', Boolean(isHidden))
+  function setHidden(isHidden) {
+    container.classList.toggle('progress__view_hidden', Boolean(isHidden))
   }
 
-  getValue() {
-    return this.#value
+  function getValue() {
+    return state.value
   }
+
+  return { setValue, setAnimated, setHidden, getValue }
 }
